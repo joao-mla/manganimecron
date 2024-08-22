@@ -1,0 +1,52 @@
+<%- include("./partials/header.ejs") %>
+
+<% if(locals.animes) {%>
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+         <%= animes[0].title %> 
+      </h1>
+      <p class="lead"><%= animes[0].synopsis %></p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">
+          View more
+        </button>
+      </div>
+    </div>
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src=<%=animes[0].image %>
+      class="d-block mx-lg-auto img-fluid" alt=<%= animes[0].title %> width=350
+      loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <% for(let i = 1; i < animes.length; i++) { %>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src=<%= animes[i].image %> alt=<%= animes[i].title %>>
+          <div class="card-body">
+            <p><%= animes[i].title %></p>
+            <p class="card-text">
+              <%= animes[i].synopsis %>
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  View more
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }; %>
+  </div>
+</div>
+
+<% } %>
+
+<%- include("./partials/footer.ejs") %>
